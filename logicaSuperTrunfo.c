@@ -5,11 +5,12 @@ int main (){
     int populacao1,pontos_turisticos1;
     float area1,pib1,densidade1,pibcap1;
     char estado1[20],cidade1 [20], cartacode1 [20];
-
     //carta2
     int populacao2,pontos_turisticos2;
     float area2,pib2,densidade2,pibcap2;
     char estado2[20],cidade2[20], cartacode2[20];//não foi iniciado as variaveis pois não é nescéssario
+    //geral
+    int escolha;
 
     printf("Bem vindo ao super trunfo\n");
 
@@ -37,6 +38,7 @@ int main (){
 
     printf("Insersir estado\n");//estado carta 2
     scanf(" %s",&estado2);
+
     printf("Inserir o codico da carta\n");//codigo da carta 2
     scanf("%s", &cartacode2);
     printf("Inserir o nome da cidade\n");//nome da cidade 2
@@ -50,8 +52,8 @@ int main (){
     printf("Insetir quantitade de pontos turisticos\n");//pontos turisticos 2
     scanf("%d", &pontos_turisticos2);
     
-    pibcap2 = (float)(pib2 / populacao2);
-    densidade2 = area2 / populacao2;
+    pibcap2 = (float)(pib2 / populacao2);//calculo do PIB per capta
+    densidade2 = area2 / populacao2;//calculo da densidade populacional
 
     //exibisao das cartas
 
@@ -81,72 +83,98 @@ int main (){
     float superpoder1,superpoder2;
     superpoder1 = (float) populacao1 + area1 + pib1 + pontos_turisticos1 + pibcap1 - densidade1;
     superpoder2 = (float) populacao2 + area2 + pib2 + pontos_turisticos2 + pibcap2 - densidade2;
-   
-    //comparação
-    printf("duelo\n");
 
-    printf("população de(a) %s: %d\n", cidade1,populacao1);
+    printf("\nescolha a opção que vocé que comparar\n");//escolha do jogador
+    printf("1: população\n");
+    printf("2: área\n");
+    printf("3: PIB\n");
+    printf("4: pontos turisticos\n");
+    printf("5: densidade pupulacional\n");
+    printf("6: PIB per capita\n");
+    printf("7: super poder\n");
+    scanf("%d", &escolha);
+
+    switch (escolha){//inicio do switch
+    case 1:
+    printf("população de(a) %s: %d\n", cidade1,populacao1);//comparação da população
     printf("população de(a) %s: %d\n", cidade2,populacao2);
-    if (populacao1 > populacao2){   //comparação da população
+    if (populacao1 > populacao2){   
         printf("vencedor:%s\n", cidade1);}
-    if(populacao1 < populacao2){
+    else if(populacao1 < populacao2){
         printf("vencedor:%s\n", cidade2);}
-    if(populacao1==populacao2){
+    else{
         printf("empare\n");}
+        break;
 
-    printf("area de(a) %s: %.2f\n",cidade1, area1);
+    case 2:
+    printf("area de(a) %s: %.2f\n",cidade1, area1);//comparação da area
     printf("area de(a) %s: %.2f\n",cidade2, area2);
-    if (area1>area2){   //comparação da area
+    if (area1>area2){   
         printf("vencedor:%s\n", cidade1);}
-    if (area1<area2){
+    else if (area1<area2){
         printf("vencedor:%s\n", cidade2);}
-    if (area1==area2){
-        printf("empate");}
+    else{
+        printf("empate\n");}
+        break;
 
-    printf("PIB de(a) %s: %.2f\n",cidade1, pib1);
+    case 3:
+    printf("PIB de(a) %s: %.2f\n",cidade1, pib1);//comparação de PIB
     printf("PIB de(a) %s: %.2f\n",cidade2, pib2);
-    if (pib1>pib2){   //comparação de PIB
+    if (pib1>pib2){   
         printf("vencedor:%s\n", cidade1);}
-    if (pib1<pib2){
+    else if (pib1<pib2){
         printf("vencedor:%s\n", cidade2);}
-    if (pib1==pib2){
-        printf("empate");}
+    else{
+        printf("empate\n");}
     
-    printf("pontos turisticos de(a) %s: %d\n", cidade1, pontos_turisticos1);
+    case 4:
+    printf("pontos turisticos de(a) %s: %d\n", cidade1, pontos_turisticos1);//comparação de pontos turisticos
     printf("pontos turisticos de(a) %s: %d\n", cidade2, pontos_turisticos2);
-    if (pontos_turisticos1>pontos_turisticos2){   //comparação de pontos turisticos
+    if (pontos_turisticos1>pontos_turisticos2){   
         printf("vencedor:%s\n", cidade1);}
-    if (pontos_turisticos1<pontos_turisticos2){
+    else if (pontos_turisticos1<pontos_turisticos2){
         printf("vencedor:%s\n", cidade2);}
-    if (pontos_turisticos1==pontos_turisticos2){
-        printf("empate");}
+    else{
+        printf("empate\n");}
+        break;
 
-    printf("densidade populacional de(a) %s: %.2f\n", cidade1, densidade1);
+    case 5:
+    printf("densidade populacional de(a) %s: %.2f\n", cidade1, densidade1);//comparação de densidade populacional
     printf("dencidade populacional de(a) %s: %.2f\n", cidade2, densidade2);
-    if (densidade1<densidade2){   //comparação de densidade populacional
+    if (densidade1<densidade2){   
         printf("vencedor:%s\n", cidade1);}
-    if (densidade1>densidade2){
+    else if (densidade1>densidade2){
         printf("vencedor:%s\n", cidade2);}
-    if (densidade1==densidade2){
-        printf("empate");}
+    else{
+        printf("empate\n");}
+        break;
 
-    printf("PIB per capita de(a) %s: %.2f\n", cidade1, pibcap1);
+    case 6:
+    printf("PIB per capita de(a) %s: %.2f\n", cidade1, pibcap1);//comparação de PIB per capita
     printf("PIB per capita de(a) %s: %.2f\n", cidade2, pibcap2);
-    if (pibcap1>pibcap2){   //comparação de PIB per capita
+    if (pibcap1>pibcap2){   
         printf("vencedor:%s\n", cidade1);}
-    if (pibcap1<pibcap2){
+    else if (pibcap1<pibcap2){
         printf("vencedor:%s\n", cidade2);}
-    if (pibcap1==pibcap2){
-        printf("empate");}   
-        
-    printf("super poder de(a) %s: %.2f\n", cidade1, superpoder1);
-    printf("super poder de(a) %s: %.2f\n", cidade2, superpoder2);
-    if (superpoder1>superpoder2){   //comparação de super poder
-        printf("vencedor:%s\n", cidade1);}
-    if (superpoder1<superpoder2){
-        printf("vencedor:%s\n", cidade2);}
-    if (superpoder1==superpoder2){
-        printf("empate");}
+    else{
+        printf("empate\n");}
+        break;
 
+    case 7:
+    printf("super poder de(a) %s: %.2f", cidade1, superpoder1);//comparação de super poder
+    printf("super poder de(a) %s: %.2f", cidade2, superpoder2);
+    if (superpoder1>superpoder2){   
+        printf("vencedor:%s\n", cidade1);}
+    else if (superpoder1<superpoder2){
+        printf("vencedor:%s\n", cidade2);}
+    else{
+        printf("empate\n");}
+        break;
+
+    default:
+        printf("opção invalida\n");
+        break;
+    }//fim do switch
+    
     return 0;
  } 
